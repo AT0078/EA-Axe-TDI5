@@ -56,7 +56,7 @@
     </style>
 </head>
 <body>
-<h1>SCIMAP Standard: River Axe</h1>
+<h1>SCIMAP TDI5 for River Axe/h1>
 <button id="locationButton">Locate Me</button>
 <div id="map"></div>
 
@@ -68,7 +68,7 @@
         attribution: 'Background map &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    map1 = L.tileLayer('https://simreaney.github.io/EA-Axe/SCIMAP-TDI5/top10pcent/{z}/{x}/{y}.png', {
+    map1 = L.tileLayer('https://simreaney.github.io/EA-Axe-TDI5/top10pcent/{z}/{x}/{y}.png', {
         minZoom: 8,
         maxZoom: 18,
         tms: false,
@@ -76,7 +76,7 @@
         name: 'Top 10% critical source areas for TDI5 based on SCIMAP'
     });
 
-    map2 = L.tileLayer('https://simreaney.github.io/EA-Axe/SCIMAP-TDI5/CSAs/{z}/{x}/{y}.png', {
+    map2 = L.tileLayer('https://simreaney.github.io/EA-Axe-TDI5/CSAs/{z}/{x}/{y}.png', {
         minZoom: 8,
         maxZoom: 18,
         tms: false,
@@ -84,7 +84,7 @@
         name: 'Hydrological connectivity based on the Network Index'
     });
 
-    map3 = L.tileLayer('https://simreaney.github.io/EA-Axe/SCIMAP-TDI5/mobPot/{z}/{x}/{y}.png', {
+    map3 = L.tileLayer('https://simreaney.github.io/EA-Axe-TDI5/mobPot/{z}/{x}/{y}.png', {
         minZoom: 8,
         maxZoom: 18,
         tms: false,
@@ -92,7 +92,7 @@
         name: 'Potential physcial mobilsiation of material'
     });
 
-    map4 = L.tileLayer('https://simreaney.github.io/EA-Axe/SCIMAP-TDI5/inStreamConcn/{z}/{x}/{y}.png', {
+    map4 = L.tileLayer('https://simreaney.github.io/EA-Axe-TDI5/inStreamConcn/{z}/{x}/{y}.png', {
         minZoom: 8,
         maxZoom: 18,
         tms: false,
@@ -100,36 +100,44 @@
         name: 'In stream TDI5 risk concentration'
     });
 
-    map5 = L.tileLayer('https://simreaney.github.io/EA-Axe/SCIMAP-TDI5/breakthroughAndDeliveryPoints/{z}/{x}/{y}.png', {
+    map5 = L.tileLayer('https://simreaney.github.io/EA-Axe-TDI5/breakthroughAndDeliveryPoints/{z}/{x}/{y}.png', {
         minZoom: 8,
         maxZoom: 18,
         tms: false,
         attribution: 'Sim Reaney / SCIMAP',
-        name: 'Field boundary breakthrough and delivery points'
+        name: 'Breakthrough and Delivery Points'
     });
 
-    map6 = L.tileLayer('https://simreaney.github.io/EA-Axe/SCIMAP-TDI5/pathways/{z}/{x}/{y}.png', {
+    map6 = L.tileLayer('https://simreaney.github.io/EA-Axe-TDI5/pathways/{z}/{x}/{y}.png', {
         minZoom: 8,
         maxZoom: 18,
         tms: false,
         attribution: 'Sim Reaney / SCIMAP',
         name: 'Flow pathways'
     });
-    map7 = L.tileLayer('https://simreaney.github.io/EA-Axe/SCIMAP-TDI5/heatmap/{z}/{x}/{y}.png', {
+    map7 = L.tileLayer('https://simreaney.github.io/EA-Axe-TDI5/heatmap/{z}/{x}/{y}.png', {
         minZoom: 8,
         maxZoom: 18,
         tms: false,
         attribution: 'Sim Reaney / SCIMAP',
-        name: 'Heatmap'
+        name: 'Heatmap of Breakthrough Points'
+    });
+    map8 = L.tileLayer('https://simreaney.github.io/EA-Axe-TDI5/heatmap/{z}/{x}/{y}.png', {
+        minZoom: 8,
+        maxZoom: 18,
+        tms: false,
+        attribution: 'Sim Reaney / SCIMAP',
+        name: 'Heatmap of Delivery Points'
     });
     var overlayMaps = {
         "Instream Risk Concentration": map4,
         "CSAs - Top 10% TDI5 Sources": map1,
         "Hydrological Connectivity": map2,
         "Mobilisation Potential": map3,
-        'Field boundary breakthrough and delivery points': map5,
+        'Breakthrough and delivery points': map5,
         'Flow and sediment surface flow pathways': map6,
-        'Heatmap of delivery points': map7
+        'Heatmap of breakthrough points': map7,
+        'Heatmap of delivery points': map8
     };
 
     L.control.layers(null, overlayMaps).addTo(map); // Null for baseMaps
