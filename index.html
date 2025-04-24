@@ -63,10 +63,30 @@
 <script>
     var map = L.map('map').setView([50.82336, -2.94429], 11);
 
-    // OpenStreetMap Tile Layer (added directly to the map)
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    // OpenStreetMap Tile Layer
+    var osmLayer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: 'Background map &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+    });
+
+    // ESRI World Imagery Tile Layer
+    var esriLayer = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Background map &copy; ESRI</a>'
+    });
+
+    // Add OpenStreetMap as the default base layer
+    osmLayer.addTo(map);
+
+    // Define baseMaps object for layer control
+    var baseMaps = {
+        "OpenStreetMap": osmLayer,
+        "ESRI World Imagery": esriLayer
+    };
+
+    // Add layer control to switch between base maps
+    L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+
+
 
     map1 = L.tileLayer('https://simreaney.github.io/EA-Axe-TDI5/top10pcent/{z}/{x}/{y}.png', {
         minZoom: 8,
@@ -122,7 +142,6 @@
         name: 'Heatmap of Delivery Points'
     });
     var overlayMaps = {
-
         "CSAs - Top 10% TDI5 Sources": map1,
         "Critical Source Area Scores (CSAs)": map2,
         'Breakthrough and delivery points': map5,
